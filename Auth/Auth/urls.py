@@ -1,4 +1,4 @@
-"""AuthenticationSystem URL Configuration
+"""Auth URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-
+from API import  views
+from AuthSocial import views as viewx
+from myapp import views as viewsy
+from sociallogin import views as viewz
+from theapps import views as viewzz
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^users/', views.UserList.as_view()),
+    url(r'^usersocial/', viewx.UserSocialList.as_view()),
+    url(r'^login/', viewsy.UserList2.as_view()),
+    url(r'^logins/', viewz.UserList2.as_view()),
+    url(r'^forgetPassword/$', viewzz.resetPass.as_view()),
+    url(r'^changePassword/$', viewzz.changePass.as_view()),
+
 ]
