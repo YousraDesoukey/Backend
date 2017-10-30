@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from rest_framework.views import APIView
 from django.http import Http404
 from rest_framework.response import Response
-from AuthenticationSystem.settings import EMAIL_HOST
+from django.conf import settings
 from rest_framework_jwt.settings import api_settings
 import jwt
 
@@ -20,7 +20,7 @@ class resetPass(APIView):
 
         usr = self.get_object(email=received["email"])
         email_subject = 'Password Reset'
-        email_sender = EMAIL_HOST
+        email_sender = settings.EMAIL_HOST_USER
         email_receiver = [usr.email]
         # ----------------dont forget to activate server-------------------
         # python -m smtpd -n -c DebuggingServer localhost:1025
